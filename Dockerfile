@@ -36,7 +36,14 @@ RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 
     go install github.com/jaeles-project/gospider@latest && \
     go install github.com/hakluke/hakrawler@latest && \
     go install github.com/hahwul/dalfox/v2@latest && \
-    go install github.com/owasp-amass/amass/v4@latest
+    go install github.com/owasp-amass/amass/v4@latest && \
+    go install github.com/edoardottt/cariddi/cmd/cariddi@latest && \
+    go install github.com/bp0lr/gauplus@latest && \
+    go install github.com/s0rg/crawley@latest && \
+    go install github.com/tomnomnom/anew@master
+
+# Install waymore (BACK-ME-UP dependency)
+RUN pip3 install git+https://github.com/xnl-h4ck3r/waymore.git --break-system-packages 2>/dev/null || true
 
 # Update nuclei templates
 RUN nuclei -update-templates 2>/dev/null || true
