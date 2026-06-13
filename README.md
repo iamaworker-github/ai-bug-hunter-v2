@@ -2,11 +2,10 @@
 
 ### AI-Powered Bug Bounty Hunting — Recon to Report, in your Terminal
 
-**33 vulnerability classes · BACK-ME-UP secrets scanner · Standalone CLI + OpenCode Plugin**  
+**33 vulnerability classes · BACK-ME-UP secrets scanner · 30+ commands**  
 **100% Free with OpenCode Zen (deepseek-v4-flash-free)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Commands](https://img.shields.io/badge/commands-24-D97706?style=flat-square)](commands/)
 [![Agents](https://img.shields.io/badge/agents-9-blueviolet?style=flat-square)](agents/)
 [![Skills](https://img.shields.io/badge/skill_domains-12-3776AB?style=flat-square)](skills/)
 [![Classes](https://img.shields.io/badge/vuln_classes-33-brightgreen?style=flat-square)](skills/web2-vuln-classes/)
@@ -16,7 +15,7 @@
 
 ## What Is This?
 
-AI Bug Hunter v2 is a professional bug bounty hunting toolkit that works **with or without OpenCode**. Give it a target — it handles recon, tests for 33 vulnerability classes, validates findings through a strict gate, and writes submission-ready reports for HackerOne, Bugcrowd, Intigriti, and Immunefi.
+AI Bug Hunter v2 is a professional **standalone** bug bounty hunting toolkit. Give it a target — it handles recon, tests for 33 vulnerability classes, validates findings through a strict gate, and writes submission-ready reports for HackerOne, Bugcrowd, Intigriti, and Immunefi.
 
 **v2 Exclusive Features:**
 - **33 vuln classes** (13 more than original) — each with deep-dive methodology
@@ -28,8 +27,6 @@ AI Bug Hunter v2 is a professional bug bounty hunting toolkit that works **with 
 ---
 
 ## Quick Start
-
-### Option A — Standalone CLI (No OpenCode needed)
 
 ```bash
 git clone https://github.com/iamaworker-github/ai-bug-hunter-v2.git
@@ -50,17 +47,6 @@ ai-bug-hunter-v2 hunt  target.com
 ai-bug-hunter-v2 validate "finding"
 ai-bug-hunter-v2 report
 ```
-
-### Option B — OpenCode Plugin
-
-```bash
-git clone https://github.com/iamaworker-github/ai-bug-hunter-v2.git
-cd ai-bug-hunter-v2
-./install_tools.sh
-opencode
-```
-
-Then type commands like `/recon`, `/hunt`, `/autopilot`.
 
 ---
 
@@ -90,34 +76,43 @@ ai-bug-hunter-v2 recon target.com
 
 ---
 
-## All 24 Commands
+## All 30+ Commands
 
 | Command | Category | What it does |
 |---------|----------|-------------|
-| `/recon <target>` | Core | Full recon — subdomains, live hosts, URLs, tech |
-| `/hunt <target>` | Core | Active vulnerability testing (33 classes) |
-| `/validate` | Core | 7-Question Gate — kill weak findings |
-| `/report` | Core | Submission-ready report (H1/Bugcrowd/Immunefi) |
-| `/autopilot <target> <mode>` | Autopilot | Full autonomous hunt loop |
-| `/pickup <target>` | Autopilot | Resume previous hunt |
-| `/surface <target>` | Autopilot | Ranked attack surface |
-| `/chain <finding>` | Autopilot | Build A→B→C exploit chains |
-| `/remember [details]` | Autopilot | Save to cross-session memory |
-| `/memory-gc` | Autopilot | Rotate memory files |
-| `/scope <asset>` | Recon | Verify scope |
-| `/scope-aggregate <program>` | Recon | Pull all in-scope assets |
-| `/intel <target>` | Recon | CVEs + disclosed reports |
-| `/takeover <target>` | Recon | Subdomain takeover candidates |
-| `/cloud-recon <target>` | Recon | S3/Azure/GCP buckets |
-| `/secrets-hunt <target>` | Recon | Leaked creds in JS/GitHub |
-| `/param-discover <url>` | Recon | Hidden HTTP parameters |
-| `/bypass-403 <url>` | Recon | 403/401 bypass techniques |
-| `/scan-cves <target>` | Recon | Nuclei CVE sweep |
-| `/arsenal` | Recon | List installed tools |
-| `/secrets-leak <target>` | **v2** | BACK-ME-UP: 10 collectors → 162 patterns |
-| `/triage [finding]` | Post-Hunt | 2-minute go/no-go check |
-| `/web3-audit <contract>` | Web3 | Smart contract audit (10 DeFi classes) |
-| `/token-scan <contract>` | Web3 | Meme coin rug pull analysis |
+| `setup` | Setup | One-time config wizard |
+| `providers` | Setup | Show providers + API key status |
+| `models` | Setup | List available models |
+| `status` | Setup | Show pipeline status |
+| `recon <target>` | Core | Full recon — subdomains, live hosts, URLs, tech |
+| `hunt <target>` | Core | Active vulnerability testing (33 classes) |
+| `validate` | Core | 7-Question Gate — kill weak findings |
+| `triage [finding]` | Core | 2-minute go/no-go check |
+| `report` | Core | Submission-ready report (H1/Bugcrowd/Immunefi) |
+| `chain <finding>` | Core | Build A→B→C exploit chains |
+| `chat` | Core | Interactive AI shell |
+| `autopilot <target> [mode]` | Autopilot | Full autonomous hunt loop |
+| `pickup <target>` | Autopilot | Resume previous hunt |
+| `surface <target>` | Autopilot | Ranked attack surface |
+| `remember [details]` | Autopilot | Save to cross-session memory |
+| `memory-gc` | Autopilot | Rotate memory files |
+| `scope <asset>` | Recon | Verify scope |
+| `scope-aggregate <program>` | Recon | Pull all in-scope assets |
+| `intel <target>` | Recon | CVEs + disclosed reports |
+| `takeover <target>` | Recon | Subdomain takeover candidates |
+| `cloud-recon <target>` | Recon | S3/Azure/GCP buckets |
+| `secrets-hunt <target>` | Recon | Leaked creds in JS/GitHub |
+| `secrets-leak <target>` | Recon | BACK-ME-UP: 10 collectors → 162 patterns |
+| `param-discover <url>` | Recon | Hidden HTTP parameters |
+| `bypass-403 <url>` | Recon | 403/401 bypass techniques |
+| `scan-cves <target>` | Recon | Nuclei CVE sweep |
+| `arsenal` | Recon | List installed tools |
+| `web3-audit <contract>` | Web3 | Smart contract audit |
+| `token-scan <contract>` | Web3 | Meme coin rug pull analysis |
+| `wordlist-gen` | Extra | Custom wordlist generation |
+| `spray` | Extra | Password spraying orchestration |
+| `breach-check [target]` | Extra | Check for breached credentials |
+| `osint-employees <target>` | Extra | Employee/email OSINT gathering |
 
 ---
 
@@ -193,21 +188,21 @@ Scope filter auto-removes 3rd party URLs. 162 patterns cover `.git/config`, `.en
 ## Architecture
 
 ```
-You
-  ├─ ai-bug-hunter-v2 (standalone CLI: brain.py + engine.py)
-  └─ opencode (plugin mode: opencode.json + skills/)
+ai-bug-hunter-v2 (Standalone CLI — brain.py + engine.py)
        ↓
-  Multi-Provider LLM (Zen / Ollama / Groq / DeepSeek / Claude / OpenAI)
+  Multi-Provider LLM (Zen / Ollama / Groq / DeepSeek / Claude / OpenAI / Grok)
        ↓
   Skills Engine (12 domains, 33 vuln classes)
        ↓
-  AI Agent (recon / validator / chain-builder / etc.)
+  AI Agent (recon / validator / chain-builder / autopilot / etc.)
        ↓
-  Tool Executor
+  Tool Executor (30+ commands)
     ├─ BACK-ME-UP (10 URL collectors → scope filter → 162 patterns)
-    ├─ Auth sessions (cookie_manager.py / auth_hunt.sh)
-    ├─ Vuln testers (hunt.py / idor_scanner.py / ssrf_probe.py)
-    └─ Post-hunt (validate.py / report_generator.py)
+    ├─ Cloud recon (S3Scanner / cloud_enum / CloudFail)
+    ├─ Secrets hunting (trufflehog / gitleaks / noseyparker)
+    ├─ Vuln scanners (nuclei / dalfox / sqlmap)
+    ├─ Post-hunt (validate / report / chain)
+    └─ Web3 audit
        ↓
   Memory (cross-session learning)
 ```
@@ -249,7 +244,6 @@ chmod +x install_tools.sh && ./install_tools.sh
 ## Requirements
 
 - Python 3.8+
-- OpenCode CLI 1.16.0+ (optional — only for plugin mode)
 - Go tools: subfinder, httpx, nuclei, katana, ffuf, gau (install via `install_tools.sh`)
 
 ---
