@@ -109,10 +109,7 @@ ai-bug-hunter-v2 recon target.com
 | `arsenal` | Recon | List installed tools |
 | `web3-audit <contract>` | Web3 | Smart contract audit |
 | `token-scan <contract>` | Web3 | Meme coin rug pull analysis |
-| `wordlist-gen` | Extra | Custom wordlist generation |
-| `spray` | Extra | Password spraying orchestration |
 | `breach-check [target]` | Extra | Check for breached credentials |
-| `osint-employees <target>` | Extra | Employee/email OSINT gathering |
 
 ---
 

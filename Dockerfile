@@ -57,7 +57,7 @@ RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 
 # ── Python packages (agents, recon, scanning, OSINT, SAST) ──────────────
 RUN pip3 install --no-cache-dir --break-system-packages \
     ollama langgraph langchain-ollama \
-    arjun theHarvester crosslinked cewler \
+    arjun \
     jwt-tool dnsreaper noseyparker \
     wafw00f ghauri scoutsuite maigret \
     pywhat sublert semgrep \
@@ -100,11 +100,6 @@ RUN mkdir -p /opt/tools && \
 
 # Add /opt/tools to PATH
 ENV PATH=$PATH:/opt/tools:/opt/tools/cloudfail:/opt/tools/log4j-scan:/opt/tools/fuxploider:/opt/tools/XSStrike:/opt/tools/cloud_enum
-
-# ── OneRuleToRuleThemAll (hashcat rule) ──────────────────────────────────
-RUN mkdir -p /usr/share/hashcat/rules && \
-    curl -fsSL https://raw.githubusercontent.com/NotSoSecure/password_cracking_rules/master/OneRuleToRuleThemAll.rule \
-      -o /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule
 
 # ── nuclei templates ────────────────────────────────────────────────────
 RUN nuclei -update-templates 2>/dev/null || true

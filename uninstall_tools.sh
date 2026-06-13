@@ -62,7 +62,7 @@ echo "The following will be removed:"
 echo ""
 echo "  Homebrew : ${BREW_TOOLS[*]}"
 echo "  Go bins  : ${GO_TOOL_NAMES[*]}   (from $GOPATH/bin/)"
-echo "  Binaries : sisakulint, cicd_scanner"
+echo "  Binaries : sisakulint"
 if [ "$REMOVE_TEMPLATES" = true ]; then
     echo "  Templates: nuclei templates"
 else
@@ -120,12 +120,6 @@ echo "[*] Removing sisakulint..."
 remove_path "/usr/local/bin/sisakulint"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# cicd_scanner — both possible install locations
-# ─────────────────────────────────────────────────────────────────────────────
-echo ""
-echo "[*] Removing cicd_scanner..."
-remove_path "/usr/local/bin/cicd_scanner"
-remove_path "$HOME/bin/cicd_scanner"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Nuclei templates (opt-in via --with-templates)

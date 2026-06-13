@@ -567,35 +567,9 @@ else
 fi
 
 # ============================================================
-# Phase 8: CI/CD Workflow Scan (auto-detect GitHub org)
+# Phase 8: CI/CD Workflow Scan (disabled — cicd_scanner removed)
 # ============================================================
-log_info "Phase 8: CI/CD Workflow Scan"
-
-GITHUB_ORGS=""
-CICD_SCANNER="$(dirname "$0")/cicd_scanner.sh"
-
-# Extract github.com/<org> patterns from recon data
-for f in "$RECON_DIR/live/httpx_full.txt" "$RECON_DIR/js/endpoints.txt" "$RECON_DIR/urls/all.txt"; do
-    if [ -f "$f" ]; then
-        GITHUB_ORGS="$GITHUB_ORGS $(grep -oP 'github\.com/\K[a-zA-Z0-9_-]+' "$f" 2>/dev/null || true)"
-    fi
-done
-
-# Deduplicate and limit to 5
-GITHUB_ORGS=$(echo "$GITHUB_ORGS" | tr ' ' '\n' | grep -v '^$' | sort -u | head -5)
-
-if [ -n "$GITHUB_ORGS" ] && [ -x "$CICD_SCANNER" ] && command -v sisakulint &>/dev/null; then
-    for ORG in $GITHUB_ORGS; do
-        log_info "CI/CD scan: org:$ORG"
-        bash "$CICD_SCANNER" "org:$ORG" --output-dir "$RECON_DIR/cicd/$ORG/" || true
-    done
-else
-    if [ -z "$GITHUB_ORGS" ]; then
-        log_warn "GitHub org not detected — CI/CD scan skipped"
-    elif ! command -v sisakulint &>/dev/null; then
-        log_warn "sisakulint not installed — CI/CD scan skipped"
-    fi
-fi
+log_info "Phase 8: CI/CD Workflow Scan (skipped — cicd_scanner removed)"
 
 # ============================================================
 # Phase 9: Nuclei vulnerability sweep (optional, gated on installed binary)
@@ -701,8 +675,6 @@ echo "  JS endpoints:      $(wc -l < "$RECON_DIR/js/endpoints.txt" 2>/dev/null |
 [ -f "$RECON_DIR/params/unique_params.txt" ] && \
 echo "  Unique params:     $(wc -l < "$RECON_DIR/params/unique_params.txt" 2>/dev/null || echo 0)"
 
-[ -d "$RECON_DIR/cicd" ] && \
-echo "  CI/CD findings:   $(find "$RECON_DIR/cicd" -name 'scan_results.txt' -exec grep -cP '\.github/workflows/' {} + 2>/dev/null | awk -F: '{s+=$NF} END {print s+0}')"
 
 [ -f "$RECON_DIR/nuclei/findings.jsonl" ] && \
 echo "  Nuclei hits:       $(wc -l < "$RECON_DIR/nuclei/findings.jsonl" | tr -d ' ')"

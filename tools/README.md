@@ -41,9 +41,6 @@ Python and shell scanner pipeline (~35 tools). Every tool checks whether its ext
 | `auth_session.py` | Auth header management across all tools |
 | `credential_store.py` | Encrypted credential store for hunt sessions |
 
-## Credential Attack (requires `--with-credential-attack`)
-`wordlist_engine.sh` · `osint_employees.sh` · `breach_checker.py` · `spray_orchestrator.sh`
-
 ## Output Format
 
 Scanner confidence states prepended to every finding:

@@ -208,20 +208,8 @@ case "$MODE" in
         python3 "$SCRIPT_DIR/_spray_oauth.py"
         ;;
     o365|okta)
-        if ! command -v trevorspray &>/dev/null; then
-            log_err "trevorspray not installed. Run: ./install_tools.sh --with-credential-attack"
-            exit 1
-        fi
-        log_warn "Dispatching to TREVORspray (its own rate-limit/SSH-proxy machinery)"
-        log_warn "Per-attempt audit log uses TREVOR output parsing — less granular than http-form mode"
-        # TREVOR uses --delay in minutes for some modules, seconds for others.
-        # Pass our seconds-based delay through; TREVOR will interpret.
-        trevorspray --users "$USERS_FILE" --passlist "$PASSES_FILE" \
-            --url "$TARGET_URL" \
-            --delay "$((DELAY / 60))" \
-            --jitter "$JITTER" \
-            $([ "$CONTINUE_ON_HIT" = true ] || echo "--no-loot")  \
-            2>&1 | tee -a "$AUDIT_LOG"
+        log_err "o365/okta mode requires trevorspray which has been removed from this project"
+        exit 1
         ;;
 esac
 
