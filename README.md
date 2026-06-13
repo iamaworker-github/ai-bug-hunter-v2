@@ -214,6 +214,25 @@ You
 
 ---
 
+## Option C — Docker
+
+```bash
+docker build -t ai-bug-hunter-v2 .
+docker run -it --rm \
+  -e ZEN_API_KEY="your-zen-api-key" \
+  -v $PWD/output:/workspace/output \
+  ai-bug-hunter-v2
+```
+
+Inside the container:
+```bash
+ai-bug-hunter-v2 setup
+ai-bug-hunter-v2 recon target.com
+ai-bug-hunter-v2 hunt target.com
+```
+
+All tools pre-installed (subfinder, httpx, nuclei, katana, ffuf, gau, etc.). Runs as root by default.
+
 ## Install Dependencies
 
 ```bash
