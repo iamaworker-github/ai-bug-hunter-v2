@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+build/
+.DS_Store
+recon/target.com/
+findings/
+reports/
+*.log

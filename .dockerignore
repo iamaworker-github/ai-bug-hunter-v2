@@ -1,0 +1,11 @@
+.git/
+.gitignore
+.gitattributes
+.private/
+memory/
+findings/
+reports/
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
